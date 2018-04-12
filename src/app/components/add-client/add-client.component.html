@@ -1,0 +1,110 @@
+<div class="row">
+  <div class="col-6">
+    <a routerLink="/" class="btn btn-link">
+      <i class="fa fa-arrow-circle-left"></i> Назад
+    </a>
+  </div>
+<div class="col-6"></div>
+</div>
+<div class="card">
+  <div class="card-header">
+    Новый клиент:
+  </div>
+  <div class="card-body">
+    <form #clientForm="ngForm" (ngSubmit)="onSubmit(clientForm)" >
+      <div class="form-group">
+        <label for="firstName">Имя:</label>
+        <input
+          type="text"
+          class="form-control"
+          name="firstName"
+          #clientFirstName="ngModel"
+          [ngClass]="{'is-invalid': clientFirstName.errors && clientFirstName.touched}"
+          [(ngModel)]="client.firstName"
+          minlength="3"
+          required
+        >
+        <div class="invalid-feedback" [hidden]="!clientFirstName.errors?.required">
+          Нужно ввести Имя
+        </div>
+        <div class="invalid-feedback" [hidden]="!clientFirstName.errors?.minlength">
+          Должно быть минимум 3 символа
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="lastName">Фамилия:</label>
+        <input
+          type="text"
+          class="form-control"
+          name="lastName"
+          #clientLastName="ngModel"
+          [ngClass]="{'is-invalid': clientLastName.errors && clientLastName.touched}"
+          [(ngModel)]="client.lastName"
+          minlength="3"
+          required
+        >
+        <div class="invalid-feedback" [hidden]="!clientLastName.errors?.required">
+          Нужно ввести Фамилию
+        </div>
+        <div class="invalid-feedback" [hidden]="!clientLastName.errors?.minlength">
+          Должно быть минимум 3 символа
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email:</label>
+        <input
+          type="text"
+          class="form-control"
+          name="email"
+          #clientEmail="ngModel"
+          [ngClass]="{'is-invalid': clientEmail.errors && clientEmail.touched}"
+          [(ngModel)]="client.email"
+          pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$"
+          required
+        >
+        <div class="invalid-feedback" [hidden]="!clientEmail.errors?.required">
+          Нужно ввести Email
+        </div>
+        <div class="invalid-feedback" [hidden]="!clientEmail.errors?.pattern">
+          Это должен быть настоящий e-mail адрес
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="phone">Телефон:</label>
+        <input
+          type="text"
+          class="form-control"
+          name="phone"
+          #clientPhone="ngModel"
+          [ngClass]="{'is-invalid': clientPhone.errors && clientPhone.touched}"
+          [(ngModel)]="client.phone"
+          minlength="10"
+          required
+        >
+        <div class="invalid-feedback" [hidden]="!clientPhone.errors?.required">
+          Нужно ввести Телефон
+        </div>
+        <div class="invalid-feedback" [hidden]="!clientPhone.errors?.minlength">
+          Должно быть минимум 10 символов: (123) 45-67-890
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="balance">Баланс:</label>
+        <input
+          type="number"
+          class="form-control"
+          name="balance"
+          #clientBalance="ngModel"
+          [(ngModel)]="client.balance"
+          [disabled]="disableBalanceOnAdd"
+          >
+      </div>
+
+      <input type="submit" value="Сохранить" class="btn btn-success btn-block">
+    </form>
+  </div>
+</div>

@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { FlashMessagesService } from 'angular2-flash-messages';
+import { FlashMessagesModule } from 'angular2-flash-messages/module/module';
 
 @Component({
   selector: 'app-root',

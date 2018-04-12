@@ -1,0 +1,36 @@
+<div class="row align-items-center">
+  <div class="col-12 col-md-8">
+    <h2><i class="fa fa-users mr-3"></i>Список клиентов</h2>
+  </div>
+  <div class="col-12 col-md-4 order-sm-last order-md-0">
+    <h5 class="text-right text-secondary">Долг: {{ totalOwed | currency:'&#8372; ':'symbol':'1.2' }}</h5>
+  </div>
+  <div class="col-12">
+
+    <table *ngIf="clients.length > 0; else noClients" class="table table-hover">
+      <thead class="thead-inverse">
+        <tr>
+          <th>Имя:</th>
+          <th>Почта:</th>
+          <th>Баланс:</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let client of clients" class="align-items-middle">
+          <td class="align-middle"> {{ client.firstName }} {{ client.lastName }} </td>
+          <td class="align-middle"> {{ client.email }} </td>
+          <td class="align-middle"> {{ client.balance | currency:'&#8372; ':'symbol':'1.2' }} </td>
+          <td class="align-middle"> <a routerLink="client/{{ client.id }}" class="btn btn-sm btn-outline-primary">
+            <i class="fa fa-arrow-circle-o-right"></i> Детали</a> </td>
+
+        </tr>
+      </tbody>
+    </table>
+
+    <ng-template #noClients >
+    <hr>
+    <h5>Идет загрузка списка клиентов ...</h5>
+    </ng-template>
+  </div>
+</div>

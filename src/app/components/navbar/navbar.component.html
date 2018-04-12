@@ -1,0 +1,35 @@
+<nav class="navbar navbar-expand-md navbar-dark bg-primary mb-4">
+  <a routerLink="/" class="navbar-brand">Система управления клиентами 0.1.0a</a>
+  <button
+    class="navbar-toggler"
+    type="button"
+    data-toggle="collapse"
+    data-target="#navbarMain">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div id="navbarMain" class="collapse navbar-collapse">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a routerLink="/" class="nav-link">Центр</a>
+      </li>
+    </ul>
+
+    <ul class="navbar-nav ml-auto">
+      <li *ngIf="!isLogIn && showRegister" class="nav-item">
+        <a routerLink="/register" class="nav-link">Регистрация</a>
+      </li>
+      <li *ngIf="!isLogIn" class="nav-item">
+        <a routerLink="/login" class="nav-link">Вход</a>
+      </li>
+      <li *ngIf="isLogIn" class="nav-item">
+        <a href="" class="nav-link">{{loggedInUser}}</a>
+      </li>
+      <li *ngIf="isLogIn" class="nav-item">
+        <a routerLink="/settings" class="nav-link">Настройки</a>
+      </li>
+      <li *ngIf="isLogIn" class="nav-item">
+        <a href="#" (click)="onLogOutClick()" class="nav-link">Выйти</a>
+      </li>
+    </ul>
+  </div>
+</nav>

@@ -1,0 +1,57 @@
+<div class="row">
+  <div class="col-12 col-sm-12 col-md-8 col-lg-6 mx-auto">
+    <div class="card">
+      <div class="card-body">
+        <h3 class="text-center pb-3 pt-3">
+          Регистрация:
+        </h3>
+        <hr class="mt-2 pb-2">
+        <form #loginForm="ngForm" (submit)="onSubmit(loginForm.valid)">
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input
+              type="text"
+              name="email"
+              class="form-control"
+              [(ngModel)]="email"
+              #Email="ngModel"
+              [ngClass]="{'is-invalid': Email.errors && Email.touched}"
+              pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$"
+              required
+            >
+            <div class="invalid-feedback" [hidden]="!Email.errors?.required">
+              Нужно ввести Email
+            </div>
+            <div class="invalid-feedback" [hidden]="!Email.errors?.pattern">
+              Это должен быть настоящий e-mail адрес
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="password">Ваш пароль:</label>
+            <input
+              type="password"
+              name="password"
+              class="form-control"
+              [(ngModel)]="password"
+              #psw="ngModel"
+              [ngClass]="{'is-invalid': psw.errors && psw.touched}"
+              minlength="6"
+              required
+            >
+            <div class="invalid-feedback" [hidden]="!psw.errors?.required">
+              Не забудьте пароль
+            </div>
+            <div class="invalid-feedback" [hidden]="!psw.errors?.minlength">
+              Должно быть минимум 6 символов
+            </div>
+          </div>
+          <div class="form-group">
+            <button class="btn btn-primary btn-block">
+              <i class='fa fa-sign-in'></i> Зарегестрироватся
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

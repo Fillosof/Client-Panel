@@ -1,0 +1,49 @@
+<div class="row">
+  <div class="col-6">
+    <a routerLink="/" class="btn btn-link">
+      <i class="fa fa-arrow-circle-left"></i> Назад
+    </a>
+  </div>
+  <div class="col-6"></div>
+</div>
+<div class="card">
+  <div class="card-header">
+    Настройки системы:
+  </div>
+  <div class="card-body">
+    <form #settingsForm="ngForm" (ngSubmit)="onSubmit()" >
+      <div class="form-check">
+        <input
+          type="checkbox"
+          class="form-check-input"
+          name="allowRegistration"
+          [checked]="settings.allowRegistration"
+          (change)="settings.allowRegistration = !settings.allowRegistration"
+        >
+        <label for="allowRegistration"  class="form-check-label">Разрешить регистрацию новых пользователей</label>
+      </div>
+      <div class="form-check">
+        <input
+          type="checkbox"
+          class="form-check-input"
+          name="disableBalanceOnAdd"
+          [checked]="settings.disableBalanceOnAdd"
+          (change)="settings.disableBalanceOnAdd = !settings.disableBalanceOnAdd"
+        >
+        <label for="disableBalanceOnAdd"  class="form-check-label">Запретить устанавливать баланс при создании новых клиентов</label>
+      </div>
+      <div class="form-check">
+        <input
+          type="checkbox"
+          class="form-check-input"
+          name="disableBalanceOnEdit"
+          [checked]="settings.disableBalanceOnEdit"
+          (change)="settings.disableBalanceOnEdit = !settings.disableBalanceOnEdit"
+        >
+        <label for="disableBalanceOnEdit"  class="form-check-label">Запретить изменять баланс при редактировании клиентов</label>
+      </div>
+
+      <input type="submit" value="Сохранить" class="btn btn-success btn-block">
+    </form>
+  </div>
+</div>
